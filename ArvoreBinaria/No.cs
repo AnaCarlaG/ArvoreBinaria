@@ -203,9 +203,9 @@ namespace ArvoreBinaria
             }
 
         }
-        private List<int> CaminhamentoNLR(List<int> lista)
+        private List<No> CaminhamentoNLR(List<No> lista)
         {
-            lista.Add(this.dados);
+            lista.Add(this);
 
             if (this.filhoEsquerdo != null)
             {
@@ -219,12 +219,12 @@ namespace ArvoreBinaria
 
             return lista;
         }
-        public List<int> NLR()
+        public List<No> NLR()
         {
-            List<int> lista = new List<int>();
+            List<No> lista = new List<No>();
             return this.CaminhamentoNLR(lista);
         }
-        private List<int> CaminhamentoLRN(List<int> lista)
+        private List<No> CaminhamentoLRN(List<No> lista)
         {
 
             if (this.filhoEsquerdo != null)
@@ -237,17 +237,17 @@ namespace ArvoreBinaria
                 this.filhoDireito.CaminhamentoLRN(lista);
             }
 
-            lista.Add(this.dados);
+            lista.Add(this);
 
             return lista;
         }
-        public List<int> LRN()
+        public List<No> LRN()
         {
-            List<int> lista = new List<int>();
+            List<No> lista = new List<No>();
             return this.CaminhamentoLRN(lista);
         }
 
-        private List<int> CaminhamentoLNR(List<int> lista)
+        private List<No> CaminhamentoLNR(List<No> lista)
         {
 
             if (this.filhoEsquerdo != null)
@@ -255,7 +255,7 @@ namespace ArvoreBinaria
                 this.filhoEsquerdo.CaminhamentoLNR(lista);
             }
 
-            lista.Add(this.dados);
+            lista.Add(this);
 
             if (this.filhoDireito != null)
             {
@@ -265,10 +265,18 @@ namespace ArvoreBinaria
 
             return lista;
         }
-        public List<int> LNR()
+        public List<No> LNR()
         {
-            List<int> lista = new List<int>();
+            List<No> lista = new List<No>();
             return this.CaminhamentoLNR(lista);
+        }
+        public void InverterSubarvores()
+        {
+            var filhoE = this.filhoEsquerdo;
+            var filhoD = this.filhoDireito;
+
+            this.filhoEsquerdo = filhoD;
+            this.filhoDireito = filhoE;
         }
     }
 }

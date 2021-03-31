@@ -45,9 +45,9 @@ namespace ArvoreBinaria
             else
             {
                 No node = this.raiz.Consultar(key);
+                var objeto = node.dados;
                 if (node.filhoEsquerdo == null && node.filhoDireito == null)
                 {
-                    var objeto = node.dados;
                     if (node.noPai.filhoEsquerdo.key == node.key)
                     {
                         node.noPai.filhoEsquerdo = null;
@@ -60,7 +60,6 @@ namespace ArvoreBinaria
                 }
                 else if (node.filhoEsquerdo != null && node.filhoDireito == null)
                 {
-                    var objeto = node.dados;
                     if (node.noPai.filhoEsquerdo.key == node.key)
                     {
                         node.noPai.filhoEsquerdo = node.filhoEsquerdo;
@@ -73,7 +72,6 @@ namespace ArvoreBinaria
                 }
                 else if (node.filhoEsquerdo == null && node.filhoDireito != null)
                 {
-                    var objeto = node.dados;
                     if (node.noPai.filhoDireito.key == node.key)
                     {
                         node.noPai.filhoDireito = node.filhoDireito;
@@ -87,7 +85,7 @@ namespace ArvoreBinaria
                 else if(node.filhoEsquerdo != null && node.filhoDireito != null)
                 {
                     var sucessor = node.Sucessor();
-                    var objeto = node.dados;
+                    objeto = node.dados;
                     this.Delete(sucessor.key);
                     node.key = sucessor.key;
                     node.dados = sucessor.dados;
@@ -103,7 +101,17 @@ namespace ArvoreBinaria
                     {
                         node.noPai.filhoEsquerdo = null;
                     }
+                    return objeto;
                 }
+            }
+        }
+        
+        public void Inverter()
+        {
+           var listaNos = this.raiz.LNR();
+            foreach (No item in listaNos)
+            {
+                item.InverterSubarvores();
             }
         }
     }
