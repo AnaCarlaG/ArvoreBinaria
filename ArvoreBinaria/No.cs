@@ -38,7 +38,7 @@ namespace ArvoreBinaria
             {
                 this.dados = dados;
             }
-            else if (this.key < key)
+            else if (this.key > key)
             {
                 if (this.filhoEsquerdo != null)
                 {
@@ -71,7 +71,7 @@ namespace ArvoreBinaria
             {
                 return this;
             }
-            else if (this.key < key)
+            else if (this.key > key)
             {
                 if (this.filhoEsquerdo != null)
                 {
@@ -128,23 +128,23 @@ namespace ArvoreBinaria
         }
         public int getGrau()
         {
-            int aux = 1;
+            int aux = 0;
             if (this.filhoEsquerdo != null)
             {
-                aux += this.filhoEsquerdo.NumeroNos();
+                aux += 1;
             }
             if (this.filhoDireito != null)
             {
-                aux += filhoDireito.NumeroNos();
+                aux += 1;
             }
             return aux;
         }
         public int NumeroNos()
         {
-            int aux = 0;
+            int aux = 1;
             if (isFolha())
             {
-                return 0;
+                return 1;
             }
             if (this.filhoEsquerdo != null)
             {
@@ -159,49 +159,44 @@ namespace ArvoreBinaria
 
         public bool isFolha()
         {
-            if (this.filhoEsquerdo == null)
-            {
-                return true;
-            }
-            else if (this.filhoDireito == null)
+            if (this.filhoEsquerdo == null && this.filhoDireito == null)
             {
                 return true;
             }
             return false;
         }
 
-        public int getProfundidade()
+        public int getNivel()
         {
             if (this.isRaiz())
             {
                 return 0;
             }
-            return noPai.getProfundidade() + 1;
+            return noPai.getNivel() + 1;
         }
-        public int getAltura()
+        public int getProfundidade()
         {
             int alturaFilhoEsquerdo = 0, alturaFilhoDireito = 0;
             if (this.isFolha())
             {
-                return 0;
+                return 1;
             }
             if (this.filhoEsquerdo != null)
             {
-                alturaFilhoEsquerdo = this.filhoEsquerdo.getAltura();
+                alturaFilhoEsquerdo = this.filhoEsquerdo.getProfundidade();
             }
             if (this.filhoDireito != null)
             {
-                alturaFilhoDireito = this.filhoDireito.getAltura();
+                alturaFilhoDireito = this.filhoDireito.getProfundidade();
             }
             if (alturaFilhoDireito > alturaFilhoEsquerdo)
             {
-                return alturaFilhoDireito;
+                return alturaFilhoDireito + 1;
             }
             else
             {
-                return alturaFilhoEsquerdo;
+                return alturaFilhoEsquerdo + 1;
             }
-
         }
         private List<No> CaminhamentoNLR(List<No> lista)
         {

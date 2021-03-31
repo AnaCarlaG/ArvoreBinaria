@@ -8,34 +8,31 @@ namespace ArvoreBinaria
         {
             Arvore arv = new Arvore();
 
-            No _1 = new No(1, null);
+            arv.Inserir(8, 8);
+            arv.Inserir(4, 4);
+            arv.Inserir(12, 12);
+            arv.Inserir(2, 2);
+            arv.Inserir(3, 3);
+            arv.Inserir(6, 6);
+            arv.Inserir(5, 5);
+            arv.Inserir(7, 7);
+            arv.Inserir(10, 10);
+            arv.Inserir(9, 9);
+            arv.Inserir(11, 11);
+            arv.Inserir(14, 14);
+            arv.Inserir(13, 13);
 
-            arv.raiz = _1;
+            // arv.Delete(8);
 
-            No _2 = new No(2, _1);
-            No _3 = new No(3, _1);
-            No _6 = new No(6, _3);
-            No _4 = new No(4, _2);
-            No _5 = new No(5, _2);
-            No _7 = new No(7, _5);
-            No _8 = new No(8, _5);
+            Console.WriteLine(arv.Consultar(12).getAltura());
 
-            _1.filhoEsquerdo = _2;
-            _1.filhoDireito = _3;
 
-            _2.filhoEsquerdo = _4;
-            _2.filhoDireito = _5;
+           // arv.Consultar(3);
+            // arv.raiz.NLR().ForEach(x => Console.WriteLine(x.key.ToString()));
 
-            _5.filhoDireito = _8;
-            _5.filhoEsquerdo = _7;
+           // arv.raiz.LRN().ForEach(x => Console.WriteLine(x.key.ToString()));
 
-            _3.filhoDireito = _6;
-
-           // arv.raiz.NLR().ForEach(x => Console.WriteLine(x.ToString()));
-
-            //arv.raiz.LRN().ForEach(x => Console.WriteLine(x.ToString()));
-
-            arv.raiz.LNR().ForEach(x => Console.WriteLine(x.ToString()));
+            //arv.raiz.LNR().ForEach(x => Console.WriteLine(x.NumeroNos()));
         }
     }
 }

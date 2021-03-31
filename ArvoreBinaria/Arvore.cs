@@ -52,7 +52,7 @@ namespace ArvoreBinaria
                     {
                         node.noPai.filhoEsquerdo = null;
                     }
-                    else 
+                    else
                     {
                         node.noPai.filhoDireito = null;
                     }
@@ -82,7 +82,7 @@ namespace ArvoreBinaria
                     }
                     return objeto;
                 }
-                else if(node.filhoEsquerdo != null && node.filhoDireito != null)
+                else if (node.filhoEsquerdo != null && node.filhoDireito != null)
                 {
                     var sucessor = node.Sucessor();
                     objeto = node.dados;
@@ -105,14 +105,36 @@ namespace ArvoreBinaria
                 }
             }
         }
-        
+
         public void Inverter()
         {
-           var listaNos = this.raiz.LNR();
+            var listaNos = this.raiz.LNR();
             foreach (No item in listaNos)
             {
                 item.InverterSubarvores();
             }
+        }
+
+        public void Inserir(int key, int dados)
+        {
+            if (this.raiz == null)
+            {
+                this.raiz = new No(key, dados, null);
+            }
+            else
+            {
+                this.raiz.Persistir(key, dados);
+            }
+        }
+
+        public No Consultar(int key)
+        {
+           return this.raiz.Consultar(key);
+        }
+
+        public int NumeroNos()
+        {
+            return this.raiz.NumeroNos();
         }
     }
 }
