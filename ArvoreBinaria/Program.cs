@@ -21,6 +21,8 @@ namespace ArvoreBinaria
             arv.Inserir(11, 11);
             arv.Inserir(14, 14);
             arv.Inserir(13, 13);
+            arv.Inserir(1, 1);
+            arv.Inserir(15, 15);
 
             //var listLRN = arv.raiz.LRN();
 
@@ -39,8 +41,19 @@ namespace ArvoreBinaria
             //{
             //    Console.WriteLine(item.dados);
             //}
+            //arv.ImprimeMenoresValores();
 
-            arv.raiz.ImprimeMenoresValores();
+            var listLNR = arv.raiz.LNR();
+
+            var arvoreInOrdem = Arvore.CriarArvoreInOrdem(listLNR);
+
+            foreach (var item in arvoreInOrdem.raiz.LNR())
+            {
+                Console.WriteLine(item.dados);
+            }
+            //arv.ImprimeMenoresValores();
+
+            //Console.WriteLine(arv.EstritamenteBinaria());
             //arv.raiz.NLR().ForEach(x => Console.WriteLine(x.key.ToString()));
 
             //arv.raiz.LRN().ForEach(x => Console.WriteLine(x.key.ToString()));

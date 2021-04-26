@@ -273,5 +273,65 @@ namespace ArvoreBinaria
             this.filhoEsquerdo = filhoD;
             this.filhoDireito = filhoE;
         }
+        public void ImprimeMenoresValores()
+        {
+            var nodes = this.LNR();
+            int size = nodes.Count / 2;
+
+            var aux = nodes.GetRange(0, size);
+            foreach (var item in aux)
+            {
+                Console.WriteLine("key: " + item.key.ToString() + " dados: " + item.dados);
+            }      
+        }
+
+        public void ImprimirNoPaiEMaiorValorFilho()
+        {
+            var nodes = this.LNR();
+            foreach (var item in nodes)
+            {
+                if (item.getGrau() > 0)
+                {
+                    Console.WriteLine("No pai: " + item.key.ToString());
+
+                    if (item.filhoEsquerdo != null && item.filhoDireito != null)
+                    {
+                        if (item.filhoDireito.dados > item.filhoEsquerdo.dados)
+                        {
+                            Console.WriteLine("Valor máximo do filho: " + item.filhoDireito.dados);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Valor máximo do filho: " + item.filhoEsquerdo.dados);
+                        }
+                    }
+                    else if (item.filhoEsquerdo != null)
+                    {
+                        Console.WriteLine("Valor máximo do filho: " + item.filhoEsquerdo.dados);
+                    }
+                    else if (item.filhoDireito != null)
+                    {
+                        Console.WriteLine("Valor máximo do filho: " + item.filhoDireito.dados);
+                    }
+                }
+
+            }
+        }
+
+        public bool EstritamenteBinaria()
+        {
+            var nodes = this.LNR();
+            foreach (var item in nodes)
+            {
+                if (item.getGrau() > 0)
+                {
+                    if (item.filhoEsquerdo == null || item.filhoDireito == null)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }

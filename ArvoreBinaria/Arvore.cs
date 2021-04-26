@@ -129,12 +129,52 @@ namespace ArvoreBinaria
 
         public No Consultar(int key)
         {
-           return this.raiz.Consultar(key);
+            return this.raiz.Consultar(key);
         }
 
         public int NumeroNos()
         {
             return this.raiz.NumeroNos();
+        }
+
+        public static Arvore CriarArvorePosOrdem(List<No> nodes)
+        {
+            nodes.Reverse();
+            Arvore arv = new Arvore();
+            foreach (var item in nodes)
+            {
+                arv.Inserir(item.key, item.dados);
+            }
+            return arv;
+        }
+        public static Arvore CriarArvorePreOrdem(List<No> nodes)
+        {
+            Arvore arv = new Arvore();
+            nodes.ForEach(x => arv.Inserir(x.key, x.dados));
+
+            return arv;
+        }
+
+        public static Arvore CriarArvoreInOrdem(List<No> nodes)
+        {
+            Arvore arv = new Arvore();
+            foreach(var item in nodes)
+            {
+                arv.Inserir(item.key, item.dados);
+            }
+            return arv;
+        }
+        public bool EstritamenteBinaria()
+        {
+            return raiz.EstritamenteBinaria();
+        }
+        public void ImprimirNoPaiEMaiorValorFilho()
+        {
+            raiz.ImprimirNoPaiEMaiorValorFilho();
+        }
+        public void ImprimeMenoresValores()
+        {
+            raiz.ImprimeMenoresValores();
         }
     }
 }
