@@ -22,17 +22,30 @@ namespace ArvoreBinaria
             arv.Inserir(14, 14);
             arv.Inserir(13, 13);
 
-            // arv.Delete(8);
+            //var listLRN = arv.raiz.LRN();
 
-            Console.WriteLine(arv.Consultar(12).getAltura());
+            //var arvorePosOrdem = Arvore.CriarArvorePosOrdem(listLRN);
 
+            // foreach(var item in arvorePosOrdem.raiz.LRN())
+            // {
+            //     Console.WriteLine(item.dados);
+            // }
 
-           // arv.Consultar(3);
-            // arv.raiz.NLR().ForEach(x => Console.WriteLine(x.key.ToString()));
+            //var listNLR = arv.raiz.NLR();
 
-           // arv.raiz.LRN().ForEach(x => Console.WriteLine(x.key.ToString()));
+            //var arvorePreOrdem = Arvore.CriarArvorePreOrdem(listNLR);
 
-            //arv.raiz.LNR().ForEach(x => Console.WriteLine(x.NumeroNos()));
+            //foreach (var item in arvorePreOrdem.raiz.NLR())
+            //{
+            //    Console.WriteLine(item.dados);
+            //}
+
+            arv.raiz.ImprimeMenoresValores();
+            //arv.raiz.NLR().ForEach(x => Console.WriteLine(x.key.ToString()));
+
+            //arv.raiz.LRN().ForEach(x => Console.WriteLine(x.key.ToString()));
+
+            // arv.raiz.LNR().ForEach(x => Console.WriteLine(x.NumeroNos()));
         }
     }
 }
